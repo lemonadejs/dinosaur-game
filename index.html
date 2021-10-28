@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Document</title>
+    <title>Dinosaur lemonade</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -14,8 +14,14 @@
         
         function App() {
 
+            /* 
+            Self.init is used to initialize some methods and functions.
+            */
             self.init = function(){
 
+              /* 
+              Here, when a key is pressed our function self.Jump() will be called.
+              */
               document.addEventListener("keydown", function (event) {
                 self.jump();
               });
@@ -24,10 +30,16 @@
               const cactus = document.getElementById("cactus");
             
 
+              /* 
+              This interval will call self.isAlive() at every 10 miliseconds to check if our dinosaur is already alive.
+              */
               setInterval(self.isAlive, 10);
 
             }
 
+            /* 
+            Self.Jump() recieve a function that will make our dinosaur jump.
+            */
             self.jump = function(){
 
               if (dino.classList != "jump") {
@@ -40,6 +52,9 @@
 
             }
 
+            /* 
+            Self.isAlive uses an if condition to check the position of the dinosaur and the cactus to detect collision.
+            */
             self.isAlive = function(){
 
               var dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
@@ -60,6 +75,9 @@
             return lemonade.element(template, self);
         }
         
+      /* 
+      lemonade.render will render our app in the element where id = root.
+      */
       lemonade.render(App, document.getElementById('root'));
 
     </script>
