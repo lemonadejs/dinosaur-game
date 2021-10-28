@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <script src="https://lemonadejs.net/v1/lemonade.js"></script>
+
+    <div id="root"></div>
+   
+    <script type="text/javascript">
+      var self = {};
+        
+        function App() {
+
+            self.init = function(){
+
+              document.addEventListener("keydown", function (event) {
+                self.jump();
+              });
+
+              const dino = document.getElementById("dino");
+              const cactus = document.getElementById("cactus");
+            
+
+              setInterval(self.isAlive, 10);
+
+            }
+
+            self.jump = function(){
+
+              if (dino.classList != "jump") {
+                dino.classList.add("jump");
+
+                setTimeout(function () {
+                  dino.classList.remove("jump");
+                }, 300);
+              }
+
+            }
+
+            self.isAlive = function(){
+
+              var dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
+
+                let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
+
+                if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
+                  alert("Game Over!");
+                }
+            }
+
+            let template = `
+                <div class="game" @ready="self.init()">
+                  <div id="dino"></div>
+                  <div id="cactus"></div>
+                </div>`;
+ 
+            return lemonade.element(template, self);
+        }
+        
+      lemonade.render(App, document.getElementById('root'));
+
+    </script>
+  </body>
+</html>
