@@ -1,6 +1,6 @@
 .game {
   width: 600px;
-  height: 200px;
+  height: 250px;
   border: 1px solid black;
   margin: auto;
 }
@@ -40,7 +40,7 @@
   }
 }
 
-#cactus {
+.cactus {
   width: 20px;
   height: 40px;
   position: relative;
